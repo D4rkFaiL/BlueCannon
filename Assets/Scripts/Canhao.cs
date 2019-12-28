@@ -6,7 +6,7 @@ public class Canhao : MonoBehaviour
 {
 
     public float firerate = 2f;
-    public float tempo = 0f;
+    public float firecooldown = 0;
 
     public int forca = 250;
     public int velocidadeeixo = 500;
@@ -19,14 +19,13 @@ public class Canhao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tempo = Time.time;
         Eixo = GetComponent<HingeJoint2D>();
         StartCoroutine(Rotacao());
     }
 
     // Update is called once per frame
     void Update()
-    {      
+    {
         Controle();
         Rotacao();
     }
@@ -40,18 +39,23 @@ public class Canhao : MonoBehaviour
 
     public void Atirar()
     {
-        var balapref = Instantiate(bala, localdotiro.transform);
-        balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+        if (Geracao.tempo > firecooldown)
+        {
+            var balapref = Instantiate(bala, localdotiro.transform);
+            balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+            firecooldown = Geracao.tempo + firerate;
+        }
     }
 
     IEnumerator Rotacao() {
+
         JointMotor2D m = Eixo.motor;
         m.motorSpeed = -velocidadeeixo;
         Eixo.motor = m;
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(1.5f);
         m.motorSpeed = velocidadeeixo;
         Eixo.motor = m;
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(Rotacao());
 
     }
