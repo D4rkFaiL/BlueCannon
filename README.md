@@ -1,7 +1,7 @@
 # BlueCannon
 Para o jogar basta executar o BlueCanon.exe,
 Caso for jogar pelo navegador só entrar no link (https://d4rkfail.github.io/),
-E para o android basta passar o BlueCanon.apk para celular e executar.
+E para o android basta passar o BlueCanon.apk para celular e executar (link do apk: https://tinyurl.com/apkCanon).
 
 A organização do código foi feita com variáveis com nomes que remetem ao que faz e funções que indicam o que faz baseado no nome,porque facilita achar as variáveis ou funções caso for necessário alguma alteração. Já para a organização do projeto foi utilizado pastas que indicam o que cada uma delas possue,porque ajuda bastante para achar os arquivos que necessita na hora da procura.
 
