@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bala
+  - PUDouble
+  - PURapid
+  - PUTriple
+  - PUMaior
+  - Morcego
   layers:
   - Default
   - TransparentFX

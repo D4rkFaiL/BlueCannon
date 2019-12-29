@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Canhao : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Canhao : MonoBehaviour
     public float firerate = 2f;
     public float firecooldown = 0;
 
+    public static int tipotiro = 0;
     public int forca = 250;
     public int velocidadeeixo = 500;
 
@@ -19,6 +21,7 @@ public class Canhao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tipotiro = 0;
         Eixo = GetComponent<HingeJoint2D>();
         StartCoroutine(Rotacao());
     }
@@ -33,17 +36,53 @@ public class Canhao : MonoBehaviour
     public void Controle() {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Atirar();
+            if (!GameManager.GameOver)
+            {
+                Atirar();
+            }
+            else
+            {
+                SceneManager.LoadScene("Jogo");
+            }
         }
     }
 
     public void Atirar()
     {
-        if (Geracao.tempo > firecooldown)
+        if (GameManager.tempo > firecooldown)
         {
-            var balapref = Instantiate(bala, localdotiro.transform);
-            balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
-            firecooldown = Geracao.tempo + firerate;
+            if (tipotiro == 0)
+            {
+                var balapref = Instantiate(bala, localdotiro.transform);
+                balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+                firecooldown = GameManager.tempo + firerate;
+            }
+            if (tipotiro == 1)
+            {
+                var balapref = Instantiate(bala, localdotiro.transform);
+                balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+                firecooldown = GameManager.tempo + (firerate/2);
+            }
+            if (tipotiro == 2 || tipotiro == 3)
+            {
+                for (int i = 0; i < tipotiro; i++)
+                {
+                    var balapref = Instantiate(bala, localdotiro.transform);
+                    balapref.transform.position = new Vector2(balapref.transform.position.x + i,balapref.transform.position.y);
+                    balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+                    firecooldown = GameManager.tempo + firerate;
+                }             
+            }
+            if (tipotiro == 4)
+            {
+                for (int i = 1; i < 5; i++)
+                {
+                    var balapref = Instantiate(bala, localdotiro.transform);
+                    balapref.transform.position = new Vector2(balapref.transform.position.x, balapref.transform.position.y - (i*0.20f));
+                    balapref.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * forca);
+                    firecooldown = GameManager.tempo + firerate;
+                }
+            }
         }
     }
 

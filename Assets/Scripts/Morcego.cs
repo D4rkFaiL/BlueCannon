@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Morcego : MonoBehaviour
 {
-    public int vida = 1;
+    public int vida;
     public int valordepontuacao = 100;
     public int velocidademov = 250;
 
@@ -13,6 +13,7 @@ public class Morcego : MonoBehaviour
     public Rigidbody2D rb;
     private void Start()
     {
+        vida = GameManager.dificuldade;
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.left * velocidademov);
 
@@ -42,22 +43,22 @@ public class Morcego : MonoBehaviour
     {
         if (transform.position.y < -7)
         {
-            Geracao.vidas -= 1;
-            Destruir();
+            GameManager.vidas -= 1;
+            Destroy(this.gameObject);
         }
     }
 
-    public void Destruir()
-    {
-        Destroy(this.gameObject);
-    }
+    //public void Destruir()
+    //{
+    //    Destroy(this.gameObject);
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Bala"))
         {
-            Geracao.pontuacao += valordepontuacao;
-            Destruir();
+            GameManager.pontuacao += valordepontuacao;
+            //Destruir();
         }
     }
 }
