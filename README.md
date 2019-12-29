@@ -9,7 +9,7 @@ Sobre os históricos de commits foram feitos toda hora que concluía alguma part
 
 O jogo possui uma variedade de cinco inimigos,com isso eles mudam de cor e a velocidade em que se movimentam,devo ter levado 1 hora para concluir isso.
 
-O Tiro também possui a variedade de quatro diferentes sendo elas: atirar mais rapido,duas balas ao mesmo tempo,três balas ao mesmo tempo,e uma rajada de quatro tiros, e para adquirir basta acertar umas bolinhas que apareceram que assim obtêm essa variedade. levei 30 minutos para fazer isso
+O Tiro também possui a variedade de quatro diferentes sendo elas: atirar mais rapido,duas balas ao mesmo tempo,três balas ao mesmo tempo,e uma rajada de quatro tiros, e para adquirir basta acertar umas bolinhas que apareceram que assim obtêm essa variedade. levei 30 minutos para fazer isso.
 
-Sobre a melhoria de UX,coloquei um highscore porque isso incentivaria o jogador a bater suas pontuações anteriores.
+Sobre a melhoria de UX,Possui uma variedade nas posições das pedras que são obstaculos e um highscore porque isso incentivaria o jogador a bater suas pontuações anteriores. levei 30 minutos.
 
