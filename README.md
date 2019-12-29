@@ -7,7 +7,7 @@ A organização do código foi feita com variáveis com nomes que remetem ao que
 
 Sobre os históricos de commits foram feitos toda hora que concluía alguma parte do código,por exemplo se fiz uma parte da mecanica que ficou funcional ou da UI que mostra as informações que queria.
 
-O jogo possui uma variedade de cinco inimigos,com isso eles mudam de cor e a velocidade em que se movimentam,devo ter levado 1hora para concluir isso.
+O jogo possui uma variedade de cinco inimigos,com isso eles mudam de cor e a velocidade em que se movimentam,devo ter levado 1 hora para concluir isso.
 
 Também possui a variedade de cinco quatro diferentes sendo elas: atirar mais rapido,duas balas ao mesmo tempo,três balas ao mesmo tempo,e uma rajada de quatro tiros. levei 30 minutos para fazer isso
 
