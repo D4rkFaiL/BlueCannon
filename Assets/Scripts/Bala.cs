@@ -23,7 +23,7 @@ public class Bala : MonoBehaviour
             if (collision.CompareTag("PUTriple"))
             {
                 Canhao.tipotiro = 3;
-            }
+            }         
             Destroy(collision.gameObject);
         }
        

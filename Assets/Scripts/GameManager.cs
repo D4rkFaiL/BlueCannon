@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverGO;
 
     public bool alteronda = false;
-    public static bool GameOver = false;
+    public static string GameOver = "START";
 
     public float cooldownmorcego = 5f;
     public float posmax;
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameOver = false;
+        GameOver = "START";
         dificuldade = 1;
         pontuacao = 0;
         vidas = 3;
@@ -48,19 +48,36 @@ public class GameManager : MonoBehaviour
     {
         tempo = Time.timeSinceLevelLoad;
         Atualizartxts();
-        GerenciarDificuldade();
-
-        if (vidas <= 0)
-        {
-            GameOverVeri();
-        }
+        GerenciarDificuldade(); 
+        GameOverVeri();      
     }
 
     void GameOverVeri()
     {
-        GameOver = true;
-        GameOverGO.SetActive(true);
-        gameovertxt.text = "Fim de Jogo\nPontuacão Final:\n" + pontuacao + "\nClique para reiniciar";
+        if (GameOver == "START")
+            Time.timeScale = 0;
+        else if (GameOver == "PLAY")
+        { 
+            Time.timeScale = 1;
+            GameOverGO.SetActive(false);
+        }
+
+        if (vidas <= 0 && GameOver == "PLAY")
+        {
+            GameOver = "END";
+            Time.timeScale = 0;
+            GameOverGO.SetActive(true);
+            print(PlayerPrefs.GetInt("PontMax"));   
+            if (pontuacao > PlayerPrefs.GetInt("PontMax"))
+            {
+                PlayerPrefs.SetInt("PontMax", pontuacao);
+                gameovertxt.text = "Fim de Jogo\nNova Pontuação máxima:\n" + pontuacao + "\nClique para reiniciar";
+            }
+            else
+            {
+                gameovertxt.text = "Fim de Jogo\nPontuação máxima:\n" + PlayerPrefs.GetInt("PontMax") + "\nClique para reiniciar";
+            }          
+        }
     }
 
     void GerenciarDificuldade()

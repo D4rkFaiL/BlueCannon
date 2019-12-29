@@ -36,11 +36,15 @@ public class Canhao : MonoBehaviour
     public void Controle() {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!GameManager.GameOver)
+            if (GameManager.GameOver == "START")
+            {
+                GameManager.GameOver = "PLAY";
+            }
+            else if (GameManager.GameOver == "PLAY")
             {
                 Atirar();
             }
-            else
+            else if (GameManager.GameOver == "END")
             {
                 SceneManager.LoadScene("Jogo");
             }
